@@ -1,0 +1,22 @@
+import 'package:flutter/material.dart';
+import 'package:horoscope_app/horoscope_detail.dart';
+import 'package:horoscope_app/horoscope_list.dart';
+import 'package:horoscope_app/model/horoscope.dart';
+
+class RouteGenerator {
+  static Route<dynamic>? routeGenerator(RouteSettings settings) {
+    switch (settings.name) {
+      case '/':
+        return MaterialPageRoute(
+          builder: (context) => HoroscopeList(),
+        );
+      case '/horoscopeDetail':
+        final Horoscope choosingHoroscope = settings.arguments as Horoscope;
+        return MaterialPageRoute(
+          builder: (context) =>
+              HoroscopeDetail(choosingHoroscope: choosingHoroscope),
+        );
+    }
+    return null;
+  }
+}
